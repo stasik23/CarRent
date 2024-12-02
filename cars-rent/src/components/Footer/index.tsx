@@ -11,8 +11,8 @@ export const Footer = () => {
           </p>
         </div>
         <div className="flex flex-col mb-6 md:mb-0">
-          <h4 className="font-semibold">About</h4>
-          <ul className="mt-2 space-y-1">
+          <h4 className="text-black font-semibold">About</h4>
+          <ul className="text-gray-500 mt-2 space-y-1">
             <li>How it works</li>
             <li>Featured</li>
             <li>Partnership</li>
@@ -20,8 +20,8 @@ export const Footer = () => {
           </ul>
         </div>
         <div className="flex flex-col mb-6 md:mb-0">
-          <h4 className="font-semibold">Community</h4>
-          <ul className="mt-2 space-y-1">
+          <h4 className="text-black font-semibold">Community</h4>
+          <ul className="text-gray-500 mt-2 space-y-1">
             <li>Events</li>
             <li>Blog</li>
             <li>Podcast</li>
@@ -29,8 +29,8 @@ export const Footer = () => {
           </ul>
         </div>
         <div className="flex flex-col mb-6 md:mb-0">
-          <h4 className="font-semibold">Socials</h4>
-          <ul className="mt-2 space-y-1">
+          <h4 className="text-black font-semibold">Socials</h4>
+          <ul className="text-gray-500 mt-2 space-y-1">
             <li>Discord</li>
             <li>Instagram</li>
             <li>Twitter</li>
