@@ -1,26 +1,54 @@
 import React from 'react';
 import { cars } from '../../data.js'
-import { FaCar } from 'react-icons/fa';
-import { CarBrand } from '../../commons/interface.js';
+import { FaCogs, FaGasPump, FaUsers } from 'react-icons/fa';
+import { CarModel } from '../../commons/interface.js';
+import Link from 'next/link.js';
 
 export const Grid = () => {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-            {cars.map((car: CarBrand) => (
-                <div className="bg-white shadow-md rounded-lg overflow-hidden" key={car.id}>
-                    <img src={car.models[0].image} alt={car.models[0].name} className="w-full h-40 object-cover" />
-                    <div className="p-4">
-                        <h3 className="text-lg font-semibold">{car.brand}</h3>
-                        {car.models.map(model => (
-                            <div key={model.id} className="mt-2">
-                                <p className="text-md">{model.name}</p>
-                                <p className="text-sm text-gray-500">{model.type}</p>
-                                <p className="text-lg font-bold">{model.rentalPrice.price} / day</p>
-                                <button className="mt-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-                                    <FaCar className="inline mr-1" /> Rent Now
-                                </button>
-                            </div>
-                        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-24 p-4 mx-[62px]">
+            {cars.map((car: CarModel) => (
+                <div className="w-128 bg-white shadow-lg rounded-lg p-4" key={car.id}>
+                    <div className="flex justify-between items-center mb-4">
+                        <div>
+                            <h2 className="text-lg text-gray-800 font-semibold">{car.name}</h2>
+                            <p className="text-sm text-gray-500">{car.type}</p>
+                        </div>
+                        <div className="text-red-500 text-xl">
+                            <button>
+                                <span role="img" aria-label="like">❤️</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="mb-4">
+                        <img
+                            src={car.image}
+                            alt={car.name}
+                            className=" bg-cover h-auto flex justify-center rounded-lg"
+                        />
+                    </div>
+
+                    <div className="flex justify-between items-center text-sm text-gray-600 mb-4">
+                        <div className="flex items-center space-x-1">
+                            <FaGasPump />
+                            <span>{car.tankCapacity}L</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                            <FaCogs />
+                            <span>{car.transmission}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                            <FaUsers />
+                            <span>{car.capacity} People</span>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-between items-center">
+                        <p className="text-lg text-gray-800 font-bold">{car.rentalPrice.price} / day</p>
+                        <Link href={`/payment/${car.id}`} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">
+                            Rent Now
+                        </Link>
                     </div>
                 </div>
             ))}

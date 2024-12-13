@@ -10,11 +10,10 @@ export interface CarModel {
     };
     tankCapacity: string; // Объем бака (например, "50 liters" или "8.8 kWh")
     image: string; // URL изображения
+    brand:string;
+    transmission:string
 }
 
-// Интерфейс для бренда автомобилей
-export interface CarBrand {
-    id: number;
-    brand: string; // Название бренда
-    models: CarModel[]; // Массив моделей этого бренда
-}
+export interface FilterPanelProps {
+    cars: CarModel[];
+  };

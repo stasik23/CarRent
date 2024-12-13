@@ -11,6 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        realcyan: "rgba(195, 212, 233, 1)",
       },
       fonts:{
         jakarta: 'Plus Jakarta Sans'
