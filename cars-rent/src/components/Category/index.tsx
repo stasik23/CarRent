@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Checkbox, Slider, Typography } from "@mui/material";
+import { Checkbox, Typography } from "@mui/material";
 import { FaCar, FaUsers } from "react-icons/fa";
 import "tailwindcss/tailwind.css";
 import { FilterPanelProps } from "@/commons/interface";
+import RangeSlider from "../RangeSlider";
 
 const FilterPanel = ({ cars }: FilterPanelProps) => {
   const [selectedType, setSelectedType] = useState<string[]>([]);
   const [selectedCapacity, setSelectedCapacity] = useState<string[]>([]);
-  const [maxPrice, setMaxPrice] = useState<number>(100);
+  const [maxPrice, setMaxPrice] = useState<number>(200);
 
-  const types = [...new Set(cars.map((car) => car.type))];
-  const capacities = [...new Set(cars.map((car) => car.capacity))];
+  const types = cars? [...new Set(cars.map((car) => car.type))] : []
+  const capacities = cars? [...new Set(cars.map((car) => car.capacity))]: []
 
   const toggleSelection = (value: string, setState: React.Dispatch<React.SetStateAction<string[]>>, state: string[]) => {
     if (state.includes(value)) {
@@ -25,7 +26,7 @@ const FilterPanel = ({ cars }: FilterPanelProps) => {
       <Typography variant="h6" className="mb-4 text-gray-800">
         <FaCar className="inline mr-2" /> Type
       </Typography>
-      {types.map((type) => (
+      {types?.map((type) => (
         <label key={type} className="flex items-center mb-2">
           <Checkbox
             checked={selectedType.includes(type)}
@@ -41,7 +42,7 @@ const FilterPanel = ({ cars }: FilterPanelProps) => {
       <Typography variant="h6" className="mt-6 mb-4 text-gray-800">
         <FaUsers className="inline mr-2" /> Capacity
       </Typography>
-      {capacities.map((capacity) => (
+      {capacities?.map((capacity) => (
         <label key={capacity} className="flex items-center mb-2">
           <Checkbox
             checked={selectedCapacity.includes(capacity)}
@@ -57,12 +58,12 @@ const FilterPanel = ({ cars }: FilterPanelProps) => {
       <Typography variant="h6" className="mt-6 mb-4 text-gray-800">
         Price
       </Typography>
-      <Slider
+      <RangeSlider
         value={maxPrice}
-        onChange={(e, value) => setMaxPrice(value as number)}
+        onChange={(e: any, value: number) => setMaxPrice(value as number)}
         aria-labelledby="price-slider"
         min={0}
-        max={100}
+        max={200}
         valueLabelDisplay="auto"
         className="text-blue-500"
       />

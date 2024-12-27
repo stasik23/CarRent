@@ -3,9 +3,10 @@ import { AiFillHeart } from "react-icons/ai";
 import { Button, Rating, Typography } from "@mui/material";
 import "tailwindcss/tailwind.css";
 
-export const FeatureCard = ({car}: {car: any}) => {
+export const FeatureCard = ({ car }: { car: any }) => {
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-md">
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="col-span-1">
           <div className="bg-blue-50 p-4 rounded-md mb-4">
